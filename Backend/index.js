@@ -1,14 +1,23 @@
 import express from "express"
 const app = express()
 const PORT = 8080
+ const jokes = [
+  {
+    id: 1,
+    title :"This a First Jokes",
+    content : "This is a Jokes"
+  }
+ ]
 
 app.get('/', (req,res) => {
   res.send('Home Page')  
 })
 
-app.get('/jokes', (req,res) => {
+
+
+app.get('/api/jokes', (req,res) => {
     
-    res.send('Welcome to joks page')
+    res.send(jokes)
 })
 
 app.listen(PORT, () => {

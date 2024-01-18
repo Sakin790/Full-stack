@@ -5,7 +5,7 @@ import axios from 'axios'
 function App() {
   const [jokes, setJoks] = useState([])
   useEffect(() => {
-    axios.get('http://localhost:8080/jokes')
+    axios.get('/api/jokes')
     .then((response) => {
       setJoks(response.data)
     })
@@ -18,15 +18,17 @@ function App() {
   
   return (
     <div>
-      <h1>Api Handle</h1>
-      <p>JOKS : {jokes.length}</p>
-      {jokes.map((joke, index) => {
-        <div key={joke.id}>
-          <h3>{joke.title}</h3>
-          <h2>{joke.content}</h2>
-        </div>
-      })}
-    </div>
+    <h1>Api Handle</h1>
+    <p>JOKS : {jokes.length}</p>
+    {jokes.map((joke) => (  // Change the variable name to avoid conflict
+      <div key={joke.id}>
+        <h3>Title is {joke.title}</h3>
+        <h2>Content {joke.content}</h2>
+      </div>
+    ))}
+  </div>
+  
+    
   )
 }
 
